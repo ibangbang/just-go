@@ -35,7 +35,7 @@ function parseTargetUrl (href, config) {
   }
 }
 
-function handleTabOnCreatedUrl (tabId, tabUrl, selected) {
+function handleTabOnCreateOrOnUpdateddUrl (tabId, tabUrl, selected) {
   if (tabUrl) {
     // console.log('handleTabCreateUrl:', tabUrl);
     var findDomainConfig = findMatchedDomainConfig(tabUrl);
@@ -66,6 +66,17 @@ function increateGoTimes (domainConfig) {
   });
 }
 
+//监听 create 事件，由于直接打开会没有 url和pendingUrl所以增加onUpdated监听
 chrome.tabs.onCreated.addListener(function (tab) {
-  handleTabOnCreatedUrl(tab.id, tab.pendingUrl, tab.selected);
+  // console.log('onCreated', JSON.stringify(tab));
+  if (tab.status === 'loading' && tab.pendingUrl) {
+    handleTabOnCreateOrOnUpdateddUrl(tab.id, tab.pendingUrl, tab.selected);
+  }
+});
+
+chrome.tabs.onUpdated.addListener(function (id, info, tab) {
+  // console.log('onUpdated', JSON.stringify(tab));
+  if (info && info.status === 'loading' && info.url) {
+    handleTabOnCreateOrOnUpdateddUrl(id, tab.url, tab.selected);
+  }
 });
