@@ -41,6 +41,7 @@ function getTimes (domain) {
         'times': res[e.times_key] ?? 0
       });
     });
+    domainTimes.sort((a, b) => b.times - a.times);
     updateList();
   });
 }
@@ -53,10 +54,11 @@ function updateList () {
   }
   const template = document.getElementById('li_template');
   const elements = new Set();
-  for (const timeItem of domainTimes) {
+  for (let [index, timeItem] of domainTimes.entries()) {
     const element = template.content.firstElementChild.cloneNode(true);
 
-    const title = timeItem['name'] + "-" + timeItem['domain'];
+    // const title = (index + 1) + ". " + timeItem['name'] + "-" + timeItem['domain'];
+    const title = timeItem['name'] + " - " + timeItem['domain'];
     const pathname = 'go times: ' + timeItem['times'];
 
     element.querySelector('.title').textContent = title;
