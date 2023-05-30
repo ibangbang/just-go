@@ -20,6 +20,13 @@ const domainConfig = [
     'divider': 'target=',
     'times_key': 'times_juejin.cn'
   },
+  {
+    'domain': 'csdn.net',
+    'name': 'CSDN',
+    'pref': 'https://link.csdn.net/?target=',
+    'divider': 'target=',
+    'times_key': 'times_csdn.net'
+  },
 ];
 
 function findMatchedDomainConfig (url) {

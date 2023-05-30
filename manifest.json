@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Just Go",
   "version": "1.0",
-  "description": "No need click continue button any more when open external links. Support 知乎zhihu.com, 简书jianshu.com, 稀土掘金juejin.cn",
+  "description": "No need click continue button any more when open external links. Support 知乎zhihu.com, 简书jianshu.com, 稀土掘金juejin.cn, CSDN csdn.net",
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",
