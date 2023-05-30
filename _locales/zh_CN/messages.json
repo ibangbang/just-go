@@ -1,0 +1,11 @@
+{
+  "appName": {
+    "message": "即开"
+  },
+  "appDesc": {
+    "message": "打开站外链接时，无需再点击继续访问，即可直接打开外链页面. 支持 知乎zhihu.com, 简书jianshu.com, 稀土掘金juejin.cn, CSDN csdn.net"
+  },
+  "goTimes": {
+    "message": "即开次数: "
+  }
+}

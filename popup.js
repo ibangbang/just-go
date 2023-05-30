@@ -29,6 +29,8 @@ const domainConfig = [
   },
 ];
 
+document.getElementById('app_name').innerHTML = chrome.i18n.getMessage("appName") + "!";
+
 var keyObj = {};
 
 domainConfig.forEach(e => {
@@ -53,6 +55,15 @@ function getTimes (domain) {
   });
 }
 
+function getMedal (index) {
+  switch (index) {
+    case 0: return "🏅";
+    case 1: return "🥈";
+    case 2: return "🥉";
+    default: return "4️⃣\xa0";
+  }
+}
+
 function updateList () {
   var div = document.querySelector('ul');
   var pObjs = div.childNodes;
@@ -65,8 +76,8 @@ function updateList () {
     const element = template.content.firstElementChild.cloneNode(true);
 
     // const title = (index + 1) + ". " + timeItem['name'] + "-" + timeItem['domain'];
-    const title = timeItem['name'] + " - " + timeItem['domain'];
-    const pathname = 'go times: ' + timeItem['times'];
+    const title = getMedal(index) + " " + timeItem['name'] + " - " + timeItem['domain'];
+    const pathname = chrome.i18n.getMessage("goTimes") + timeItem['times'];
 
     element.querySelector('.title').textContent = title;
     element.querySelector('.pathname').textContent = pathname;

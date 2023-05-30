@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Just Go",
+  "name": "__MSG_appName__",
   "version": "1.0",
-  "description": "No need click continue button any more when open external links. Support 知乎zhihu.com, 简书jianshu.com, 稀土掘金juejin.cn, CSDN csdn.net",
+  "description": "__MSG_appDesc__",
+  "default_locale": "en",
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",
@@ -19,7 +20,8 @@
       "matches": [
         "https://*.zhihu.com/*",
         "https://*.jianshu.com/*",
-        "https://*.juejin.cn/*"
+        "https://*.juejin.cn/*",
+        "https://*.csdn.net/*"
       ]
     }
   ],
