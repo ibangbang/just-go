@@ -9,8 +9,8 @@ const domainConfig = [
   {
     'domain': 'jianshu.com',
     'name': '简书',
-    'pref': 'https://links.jianshu.com/go?to=',
-    'divider': 'to=',
+    'pref': 'https://www.jianshu.com/go-wild?',
+    'divider': 'url=',
     'times_key': 'times_jianshu.com'
   },
   {
@@ -52,7 +52,7 @@ function handleTabOnCreateOrOnUpdateddUrl (tabId, tabUrl, selected) {
       replacedUrl = parseTargetUrl(tabUrl, findDomainConfig);
       if (replacedUrl) {
         increateGoTimes(findDomainConfig);
-        // console.log('replaced url', findDomainConfig['domain'], replacedUrl);
+        console.log('replaced oldUrl', tabUrl, findDomainConfig['domain'], 'newUrl', replacedUrl);
         chrome.tabs.update(tabId, {
           'url': replacedUrl,
           'selected': selected
@@ -84,6 +84,6 @@ chrome.tabs.onCreated.addListener(function (tab) {
 chrome.tabs.onUpdated.addListener(function (id, info, tab) {
   // console.log('onUpdated', JSON.stringify(tab));
   if (info && info.status === 'loading' && info.url) {
-    handleTabOnCreateOrOnUpdateddUrl(id, tab.url, tab.selected);
+    handleTabOnCreateOrOnUpdateddUrl(id, info.url, tab.selected);
   }
 });
